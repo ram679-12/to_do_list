@@ -1,0 +1,215 @@
+.todo-pin-card {
+  position: relative;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all var(--transition-normal);
+}
+
+.todo-pin-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-light);
+}
+
+.todo-card-pinned {
+  border-left: 4px solid var(--primary);
+  background: linear-gradient(180deg, #fffcfc 0%, #ffffff 100%);
+}
+
+.todo-card-completed {
+  opacity: 0.65;
+  background-color: #fafbfc;
+}
+
+.pin-action-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  opacity: 0.4;
+  transition: all var(--transition-fast);
+}
+
+.todo-pin-card:hover .pin-action-btn {
+  opacity: 0.8;
+}
+
+.pin-action-btn:hover {
+  opacity: 1 !important;
+  background-color: var(--primary-light);
+  transform: scale(1.1);
+}
+
+.pinned-active {
+  opacity: 1 !important;
+  background-color: var(--primary-light);
+}
+
+.todo-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 36px;
+}
+
+.pinned-badge-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--primary);
+  background-color: var(--primary-light);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+.todo-card-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.custom-checkbox-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  border: 2px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all var(--transition-fast);
+  background-color: #ffffff;
+}
+
+.custom-checkbox-btn:hover {
+  border-color: var(--primary);
+  background-color: var(--primary-light);
+}
+
+.checkbox-checked {
+  background-color: #10b981 !important;
+  border-color: #10b981 !important;
+  color: #ffffff;
+}
+
+.checkbox-check-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.todo-content-area {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-text-display {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-main);
+  word-break: break-word;
+  display: inline-block;
+  cursor: pointer;
+  user-select: text;
+}
+
+.todo-card-completed .todo-text-display {
+  color: var(--text-light);
+  text-decoration: line-through;
+}
+
+.todo-edit-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.todo-edit-input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--primary);
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #ffffff;
+}
+
+.edit-btn-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.save-edit-btn {
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cancel-edit-btn {
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-input);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.todo-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-card);
+}
+
+.todo-meta-date {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.card-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-icon-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  background-color: transparent;
+  transition: all var(--transition-fast);
+}
+
+.edit-action:hover {
+  background-color: #f3f4f6;
+  transform: scale(1.1);
+}
+
+.delete-action:hover {
+  background-color: #fee2e2;
+  transform: scale(1.1);
+}
+

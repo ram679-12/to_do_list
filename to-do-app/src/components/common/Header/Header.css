@@ -1,0 +1,43 @@
+.header {
+  padding: 0 0 20px 0;
+}
+
+.header-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.icon-btn:hover {
+  background: #f0f0f0;
+}
+
+.header-title {
+  font-size: 34px;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+  line-height: 1.15;
+}
+
+.header-date {
+  font-size: 15px;
+  color: #888;
+  font-weight: 400;
+}
+

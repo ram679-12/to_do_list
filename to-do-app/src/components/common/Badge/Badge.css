@@ -1,0 +1,39 @@
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  user-select: none;
+  transition: transform var(--transition-fast);
+}
+
+.category-badge:hover {
+  transform: translateY(-1px);
+}
+
+.badge-sm {
+  font-size: 11px;
+  padding: 3px 8px;
+}
+
+.badge-md {
+  font-size: 12px;
+  padding: 4px 11px;
+}
+
+.badge-lg {
+  font-size: 13px;
+  padding: 6px 14px;
+}
+
+.badge-icon {
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+.badge-text {
+  line-height: 1.2;
+}
+

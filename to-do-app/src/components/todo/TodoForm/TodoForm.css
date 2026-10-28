@@ -1,0 +1,181 @@
+.pinterest-todo-form {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 24px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.pinterest-todo-form:focus-within {
+  border-color: rgba(230, 0, 35, 0.35);
+  box-shadow: var(--shadow-pinterest);
+}
+
+.form-input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.input-field-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--bg-input);
+  padding: 12px 18px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.input-field-wrapper:focus-within {
+  background-color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.input-leading-icon {
+  font-size: 18px;
+  user-select: none;
+}
+
+.todo-main-input {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-main);
+  background: transparent;
+}
+
+.todo-main-input::placeholder {
+  color: var(--text-light);
+}
+
+.pin-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-input);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pin-toggle-btn:hover {
+  background-color: #e5e7eb;
+  color: var(--text-main);
+}
+
+.pin-toggle-active {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid rgba(230, 0, 35, 0.2);
+}
+
+.submit-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px;
+  background-color: var(--primary);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: var(--shadow-pinterest);
+  white-space: nowrap;
+}
+
+.submit-add-btn span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.submit-add-btn:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.submit-add-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.form-categories-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-card);
+  overflow-x: auto;
+}
+
+.category-select-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.category-chips-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.category-chip-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.category-chip-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.96);
+}
+
+.category-chip-selected {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .form-input-row {
+    flex-wrap: wrap;
+  }
+
+  .input-field-wrapper {
+    width: 100%;
+    order: 1;
+  }
+
+  .pin-toggle-btn {
+    order: 2;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .submit-add-btn {
+    order: 3;
+    flex: 1;
+    justify-content: center;
+  }
+}
+
