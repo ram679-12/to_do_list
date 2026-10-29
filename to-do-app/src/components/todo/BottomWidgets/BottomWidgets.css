@@ -1,0 +1,227 @@
+.bottom-widgets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.bottom-left-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Dark Card */
+.dark-index-card {
+  background: #0f172a;
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.index-circle-wrap, .level-circle-wrap {
+  width: 44px;
+  height: 44px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.index-circle-svg, .level-circle-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.index-circle-text {
+  position: absolute;
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.index-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.index-subtitle {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* Light Card */
+.light-level-card {
+  background: #ffffff;
+  border: 1px solid #f0f3f1;
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.level-circle-text {
+  position: absolute;
+  font-size: 11px;
+  font-weight: 800;
+  color: #16a34a;
+}
+
+.level-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 2px;
+}
+
+.level-subtitle {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* Community Green Banner Card */
+.community-banner-card {
+  background: linear-gradient(135deg, #093b32 0%, #0d5145 100%);
+  color: #ffffff;
+  border-radius: 18px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(11, 45, 39, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.community-banner-card::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.banner-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.banner-brand-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #a7f3d0;
+}
+
+.banner-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+}
+
+.banner-arrow-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.banner-arrow-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translate(2px, -2px);
+}
+
+.banner-heading {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.banner-tags-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.banner-tag {
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  color: #d1fae5;
+  backdrop-filter: blur(4px);
+}
+
+.banner-footer-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar-group {
+  display: flex;
+}
+
+.avatar-chip {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #093b32;
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -6px;
+}
+
+.avatar-chip:first-child {
+  margin-left: 0;
+}
+
+.av-1 { background: #38bdf8; color: #fff; }
+.av-2 { background: #f472b6; color: #fff; }
+.av-3 { background: #facc15; color: #1e293b; }
+
+.banner-members-count {
+  font-size: 11px;
+  color: #a7f3d0;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .bottom-widgets-grid {
+    grid-template-columns: 1fr;
+  }
+}

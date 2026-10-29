@@ -1,17 +1,34 @@
-import Header from '../../components/common/Header';
-import FilterBar from '../../components/todo/FilterBar';
-import TaskList from '../../components/todo/TaskList';
-import AddTask from '../../components/todo/AddTask';
+import Sidebar from '../../components/common/Sidebar';
+import DashboardHeader from '../../components/todo/DashboardHeader';
+import StatCards from '../../components/todo/StatCards';
+import TaskGauge from '../../components/todo/TaskGauge';
+import CategoryBreakdown from '../../components/todo/CategoryBreakdown';
+import TaskBoard from '../../components/todo/TaskBoard';
+import BottomWidgets from '../../components/todo/BottomWidgets';
 import './Home.css';
 
 function Home() {
   return (
-    <div className="home-screen">
-      <div className="home-card">
-        <Header />
-        <FilterBar />
-        <TaskList />
-        <AddTask />
+    <div className="dashboard-app-frame">
+      <div className="dashboard-main-window">
+        {/* Left Dark Green Sidebar */}
+        <Sidebar />
+
+        {/* Right White Content Area */}
+        <main className="dashboard-content-area">
+          <DashboardHeader />
+          <StatCards />
+
+          {/* Middle Row Widgets */}
+          <div className="dashboard-middle-row">
+            <TaskGauge />
+            <CategoryBreakdown />
+            <TaskBoard />
+          </div>
+
+          {/* Bottom Row Widgets */}
+          <BottomWidgets />
+        </main>
       </div>
     </div>
   );

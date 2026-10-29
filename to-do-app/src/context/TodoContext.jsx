@@ -1,9 +1,8 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { INITIAL_TODOS } from '../utils/constants';
 
 const TodoContext = createContext(null);
-
-const STORAGE_KEY = 'mytasks_todos';
+const STORAGE_KEY = 'taskdash_todos';
 
 export const TodoProvider = ({ children }) => {
   const [todos, setTodos] = useState(() => {
@@ -15,70 +14,52 @@ export const TodoProvider = ({ children }) => {
     }
   });
 
-  const [filter, setFilter] = useState('All');
+  const [activeNav, setActiveNav] = useState('dashboard');
 
   useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
-    } catch (e) {
-      console.error(e);
-    }
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(todos)); }
+    catch (e) { console.error(e); }
   }, [todos]);
 
-  const addTodo = (text, time) => {
+  const addTodo = (text, category = 'Work') => {
     if (!text.trim()) return;
-    setTodos(prev => [
-      ...prev,
-      {
-        id: Date.now(),
-        text: text.trim(),
-        time: time || '',
-        completed: false,
-        flagged: false,
-        status: 'To Do',
-      },
-    ]);
+    const now = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+    setTodos(prev => [{
+      id: Date.now(), text: text.trim(), time: now,
+      completed: false, flagged: false, category, progress: 0,
+    }, ...prev]);
   };
 
-  const toggleComplete = (id) => {
-    setTodos(prev =>
-      prev.map(t =>
-        t.id === id
-          ? { ...t, completed: !t.completed, status: !t.completed ? 'Done' : 'To Do' }
-          : t
-      )
-    );
-  };
+  const toggleComplete = (id) => setTodos(prev =>
+    prev.map(t => t.id === id ? { ...t, completed: !t.completed, progress: !t.completed ? 100 : t.progress } : t)
+  );
 
-  const toggleFlag = (id) => {
-    setTodos(prev =>
-      prev.map(t => (t.id === id ? { ...t, flagged: !t.flagged } : t))
-    );
-  };
+  const toggleFlag   = (id) => setTodos(prev => prev.map(t => t.id === id ? { ...t, flagged: !t.flagged } : t));
+  const deleteTodo   = (id) => setTodos(prev => prev.filter(t => t.id !== id));
 
-  const deleteTodo = (id) => {
-    setTodos(prev => prev.filter(t => t.id !== id));
-  };
+  const stats = useMemo(() => {
+    const total     = todos.length;
+    const completed = todos.filter(t => t.completed).length;
+    const active    = todos.filter(t => !t.completed).length;
+    const flagged   = todos.filter(t => t.flagged).length;
+    const inProgress= todos.filter(t => !t.completed && t.progress > 0).length;
+    const pct       = total ? Math.round((completed / total) * 100) : 0;
+    return { total, completed, active, flagged, inProgress, pct };
+  }, [todos]);
 
-  const filteredTodos = todos.filter(t => {
-    if (filter === 'All') return true;
-    if (filter === 'Done') return t.completed;
-    return t.status === filter && !t.completed;
-  });
+  const visibleTodos = useMemo(() => {
+    if (activeNav === 'active')    return todos.filter(t => !t.completed);
+    if (activeNav === 'progress')  return todos.filter(t => !t.completed && t.progress > 0);
+    if (activeNav === 'completed') return todos.filter(t => t.completed);
+    if (activeNav === 'flagged')   return todos.filter(t => t.flagged);
+    return todos; // dashboard — show all
+  }, [todos, activeNav]);
 
   return (
-    <TodoContext.Provider
-      value={{
-        todos,
-        filteredTodos,
-        filter,
-        setFilter,
-        addTodo,
-        toggleComplete,
-        toggleFlag,
-        deleteTodo,
-      }}
-    >
+    <TodoContext.Provider value={{
+      todos, visibleTodos, stats, activeNav, setActiveNav,
+      addTodo, toggleComplete, toggleFlag, deleteTodo,
+    }}>
       {children}
     </TodoContext.Provider>
   );
@@ -86,6 +67,6 @@ export const TodoProvider = ({ children }) => {
 
 export const useTodos = () => {
   const ctx = useContext(TodoContext);
-  if (!ctx) throw new Error('useTodos must be used within TodoProvider');
+  if (!ctx) throw new Error('useTodos must be inside TodoProvider');
   return ctx;
 };
